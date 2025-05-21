@@ -1,5 +1,5 @@
 # Final Project and Deployment
-## DEPLOY YRL.LINK: https://nutravibe.netlify.app/
+DEPLOY YRL.LINK: https://nutravibe.netlify.app/
 ## Objectives
 Build a fully functional web application.
 Apply HTML, CSS, and JavaScript concepts learned.
@@ -10,7 +10,7 @@ Choose one of the following project ideas:
 Blog Website: Implement a multi-page site with navigation.
 Ecommerce Website: Implement a multi-page site with navigation.
 
->[!NOTE]
+[NOTE]
 > - Include at least:
 > - A responsive design.
 > - JavaScript interactivity.
