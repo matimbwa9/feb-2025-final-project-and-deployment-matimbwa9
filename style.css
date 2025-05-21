@@ -58,7 +58,8 @@ body {
     flex-direction: column;
     width: 100%;
     margin-top: 0.5rem;
-    background: #4e69ae;
+    background:  #416553
+;
   }
 
   /* Show nav links when toggled */
@@ -130,7 +131,7 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-  color: #27ae60;
+  color: #2c3e50;
 }
 
 /* Mobile responsive stack */
