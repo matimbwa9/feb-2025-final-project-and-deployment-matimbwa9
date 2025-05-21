@@ -1,11 +1,13 @@
-/* Base styles */ 
+/* Base styles */
+
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
   background: #f9f9f9;
   color: #333;
   line-height: 1.6;
-  padding: 0;
+  overflow-x: hidden;
 }
 
 /* Responsive container */
@@ -15,14 +17,75 @@ body {
   padding: 0 20px;
 }
 
+
+/* Menu links (desktop view) */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  justify-content: center; /* center links */
+}
+
+/* Individual links */
+.nav-links li {
+  margin-left: 2rem;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Hamburger button - hidden on desktop */
+.menu-toggle {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none;
+  flex-shrink: 0;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  /* Hide nav links initially */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+    background: #4e69ae;
+  }
+
+  /* Show nav links when toggled */
+  .nav-links.show {
+    display: flex;
+  }
+
+  /* Show hamburger button */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Keep nav as row with logo left, toggle right */
+  nav {
+    flex-wrap: nowrap;
+  }
+}
+
+
 /* Navigation */
 nav {
-  background: #fff;
-  padding: 1rem 20px;
+  background: #273960;
+  padding: 1rem 20px; 
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   position: sticky;
-  top: 0;
-  z-index: 1000;
+  top: 0px;
+  z-index: 10;
 
   display: flex;
   justify-content: space-between;
@@ -44,6 +107,7 @@ img, iframe {
   max-width: 100%;
   height: auto;
 }
+
 
 /* Navigation links on right */
 nav ul {
@@ -87,56 +151,10 @@ nav ul li a.active {
   }
 }
 
-@media (max-width: 768px) {
-  header.hero {
-    padding: 60px 20px;
-    background-size: cover;
-    background-position: center;
-    height: auto;
-    min-height: unset;
-  }
-}
-
-
-.menu-toggle {
-  display: none; 
-}
-
-/* On phones */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block; /* show toggle on phone */
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #333;
-  }
-
-  nav ul {
-    display: none;
-    flex-direction: column;
-    background: white;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    border-radius: 6px;
-    padding: 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  nav {
-    justify-content: space-between;
-  }
-}
-
-
 /* Hero header */
 header.hero {
   background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-  min-height: 300px;
+  min-height: 50px;
   color: white;
   text-align: center;
   padding: 100px 20px 60px;
@@ -155,6 +173,7 @@ header.hero .hero-text {
   z-index: 1;
   max-width: 600px;
   margin: 0 auto;
+  
 }
 header.hero h1 {
   font-size: 3rem;
@@ -167,7 +186,74 @@ header.hero p {
   font-weight: 300;
 }
 
-/* Fade-in animation */
+/* Hero header */
+header.hero {
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+  min-height: 50px;
+  color: white;
+  text-align: center;
+  padding: 100px 20px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+header.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+
+header.hero .hero-text {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+header.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+header.hero p {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header.hero {
+    padding: 60px 15px 40px;
+  }
+
+  header.hero h1 {
+    font-size: 2rem;
+  }
+
+  header.hero p {
+    font-size: 1rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+}
+
+/* Blog posts grid */
+.blog-posts
+
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -179,7 +265,6 @@ header.hero p {
   transform: translateY(0);
 }
 
-/* Read More Button */
 .read-more-btn {
   background-color: #3cb371;
   color: white;
@@ -193,34 +278,42 @@ header.hero p {
 .read-more-btn:hover {
   background-color: #2e8b57;
 }
-
-/* About Section Grid */
 .about-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
-/* About Section Blocks */
 .about-block {
-  background-color: #f9f9f9;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  text-align: center;
+  padding: 1rem 0;
 }
 
-/* Icon Heading */
 .icon-heading {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 12px;
+  margin-bottom: 0.5rem;
 }
 
 .icon-heading img {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.about-block h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #3cb371; 
+}
+
+.about-block p {
+  margin: 0;
+  line-height: 1.6;
+  max-width: 600px;
+  font-size: 1rem;
+  color: #444;
 }
 
 /* Contact Form Styles */
@@ -279,15 +372,15 @@ section form button[type="submit"]:hover {
   }
 }
 
-/* Navigation alternative styles */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #446791;
-  color: #fff;
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2efef;
+  color: #333;
 }
+
+
 
 nav .logo {
   font-weight: 700;
@@ -310,7 +403,6 @@ nav ul li a.active {
   text-decoration: underline;
 }
 
-/* Sections */
 .section {
   padding: 2rem;
   max-width: 1200px;
@@ -329,7 +421,37 @@ nav ul li a.active {
   color: #666;
 }
 
-/* Team Grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.about-block {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.icon-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.icon-heading img {
+  width: 32px;
+  height: 32px;
+}
+
+.map-container {
+  margin-top: 1rem;
+  width: 100%;
+  height: 200px;
+}
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -337,13 +459,64 @@ nav ul li a.active {
   margin-top: 3rem;
 }
 
-/* Team Member Cards */
 .team-member {
   text-align: center;
   background-color: #fff;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.team-member img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 1rem;
+  background-color: #eee;
+}
+
+/* === Animated Card Effects for About Section === */
+
+.about-grid,
+.team-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-top: 2rem;
+}
+
+.about-block,
+.team-member {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-align: center;
+}
+
+.about-block:hover,
+.team-member:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.12);
+}
+
+.icon-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.icon-heading img {
+  width: 40px;
+  height: 40px;
 }
 
 .team-member img {
@@ -384,7 +557,8 @@ nav ul li a.active {
   margin-top: 1rem;
 }
 
-/* Footer */
+
+/* FOOTER */
 footer {
   text-align: center;
   padding: 2rem;
@@ -392,42 +566,3 @@ footer {
   color: white;
   margin-top: 3rem;
 }
-
-/* === Animated Card Effects for About Section === */
-.about-grid,
-.team-grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  margin-top: 2rem;
-}
-
-.about-block,
-.team-member {
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  text-align: center;
-}
-
-.about-block:hover,
-.team-member:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.12);
-}
-
-.icon-heading {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.icon-heading img {
-  width: 40px;
-  height: 40px;
-}
-

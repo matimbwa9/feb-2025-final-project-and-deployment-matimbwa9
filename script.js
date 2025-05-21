@@ -1,12 +1,23 @@
 
-// ========== Expand blog post content ========== //
+document.addEventListener('DOMContentLoaded', () => {
+  // ========== Mobile Menu Toggle ========== //
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (toggleBtn && navLinks) {
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+  });
+
+  // ========== Expand blog post content ========== //
 document.addEventListener('DOMContentLoaded', () => {
   const blogPosts = [
     { buttonText: 'Read More', elementId: 'fullArticle1' },
     { buttonText: 'Read More', elementId: 'fullArticle2' },
     { buttonText: 'Read More', elementId: 'fullArticle3' }
   ];
-
   blogPosts.forEach((post, index) => {
     const article = document.getElementById(post.elementId);
     if (article) {
